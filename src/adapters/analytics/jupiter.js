@@ -76,7 +76,6 @@ exports.enableAnalytics = function () {
 
 function sendBidRequestToJupiter(bid) {
     let xhr = new XMLHttpRequest();
-    console.log(bid);
     xhr.open('GET', 'https://jupiter.coolmath.net/ingestion/bids.php?action=request&bidderCode=' + bid.bidderCode + "&units=" + bid.bids.length);
     xhr.send(null);
 }
