@@ -76,7 +76,9 @@ exports.enableAnalytics = function () {
 
 function sendBidRequestToJupiter(bid) {
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://jupiter.coolmath.net/ingestion/bids.php?action=request&bidderCode=' + bid.bidderCode + "&units=" + bid.bids.length);
+    xhr.open('GET', 'https://jupiter.coolmath.net/ingestion/bids.php?action=request&bidderCode=' + bid.bidderCode +
+        "&units=" + bid.bids.length +
+        "&request=" + bid.requestId);
     xhr.send(null);
 }
 
@@ -85,20 +87,23 @@ function sendBidResponseToJupiter(bid) {
     xhr.open('GET', 'https://jupiter.coolmath.net/ingestion/bids.php?action=response&bidderCode=' + bid.bidderCode +
         '&time=' + bid.timeToRespond +
         '&cpm=' + bid.cpm +
-        "&unit=" + bid.adUnitCode);
+        "&unit=" + bid.adUnitCode +
+        "&request=" + bid.requestId);
     xhr.send(null);
 }
 
 function sendBidTimeoutsToJupiter(bidders) {
     utils.each(bidders, function(bid) {
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', 'https://jupiter.coolmath.net/ingestion/bids.php?action=timeout&bidderCode=' + bid.bidderCode);
+        xhr.open('GET', 'https://jupiter.coolmath.net/ingestion/bids.php?action=timeout&bidderCode=' + bid.bidderCode +
+            "&request=" + bid.requestId);
         xhr.send(null);
     });
 }
 function sendBidWonToJupiter(bid) {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://jupiter.coolmath.net/ingestion/bids.php?action=won&bidderCode=' + bid.bidderCode + "&cpm=" + bid.cpm +
-        "&unit=" + bid.adUnitCode);
+        "&unit=" + bid.adUnitCode +
+        "&request=" + bid.requestId);
     xhr.send(null);
 }
