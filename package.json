@@ -18,7 +18,7 @@
     "prebid"
   ],
   "globalVarName": "pbjs",
-  "analytics": ["jupiter"],
+  "analytics": ["prebidoverlay","jupiter"],
   "author": "the prebid.js contributors",
   "license": "Apache-2.0",
   "engines": {
