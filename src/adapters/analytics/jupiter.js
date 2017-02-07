@@ -78,7 +78,8 @@ function sendBidRequestToJupiter(bid) {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://in.jupiter.coolmath.net/bids.php?action=request&bidderCode=' + bid.bidderCode +
         "&units=" + bid.bids.length +
-        "&request=" + bid.requestId);
+        "&request=" + bid.requestId +
+        "&domain=" + window.location.hostname);
     xhr.send(null);
 }
 
@@ -88,7 +89,8 @@ function sendBidResponseToJupiter(bid) {
         '&time=' + bid.timeToRespond +
         '&cpm=' + bid.cpm +
         "&unit=" + bid.adUnitCode +
-        "&request=" + bid.requestId);
+        "&request=" + bid.requestId +
+        "&domain=" + window.location.hostname);
     xhr.send(null);
 }
 
@@ -96,7 +98,8 @@ function sendBidTimeoutsToJupiter(bidders) {
     utils.each(bidders, function(bid) {
         let xhr = new XMLHttpRequest();
         xhr.open('GET', 'https://in.jupiter.coolmath.net/bids.php?action=timeout&bidderCode=' + bid.bidderCode +
-            "&request=" + bid.requestId);
+            "&request=" + bid.requestId +
+            "&domain=" + window.location.hostname);
         xhr.send(null);
     });
 }
@@ -104,6 +107,7 @@ function sendBidWonToJupiter(bid) {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://in.jupiter.coolmath.net/bids.php?action=won&bidderCode=' + bid.bidderCode + "&cpm=" + bid.cpm +
         "&unit=" + bid.adUnitCode +
-        "&request=" + bid.requestId);
+        "&request=" + bid.requestId +
+        "&domain=" + window.location.hostname);
     xhr.send(null);
 }
