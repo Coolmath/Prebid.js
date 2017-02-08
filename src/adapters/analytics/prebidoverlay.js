@@ -47,5 +47,5 @@ exports.enableAnalytics = function () {
 };
 
 function sendBidWonToPrebidOverlay(bid) {    
-    jQuery("#" + bid.adUnitCode).before("<div style='color: #FF0 !important;position: relative;border: 1px solid #FF0;height: 20px;font-size:16px;vertical-align:middle;display:table-cell'>" + bid.bidderCode + " cpm:" + bid.cpm + " won</div>");        
+    jQuery("#" + bid.adUnitCode + "-pre").replaceWith("<div class='reset-content' id='#" + bid.adUnitCode + "-pre' style='color: #FF0 !important;position: relative;border: 1px solid #FF0;height: 20px;font-size:16px;vertical-align:middle;display:table-cell'>" + bid.bidderCode + " cpm:" + bid.cpm + "</div>");        
 }
